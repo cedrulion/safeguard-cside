@@ -26,8 +26,11 @@ const Signin = () => {
       const response = await axios.post('http://localhost:5000/api/user/login', formData);
 
       if (response.status === 200) {
-        const { token, user } = response.data;
+        const { token, user,loggedInUser } = response.data;
+        console.log(response.data);
         localStorage.setItem('token', token);
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser))
+        localStorage.setItem("USER", JSON.stringify(user))
         // Display success toast
         toast.success('Login successful!');
         navigate('/dashboard');

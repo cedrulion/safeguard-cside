@@ -4,7 +4,7 @@ import Nav from './Nav'
 function Browse() {
   return (
     <div>
-        <Nav/>
+        
         <div className='border-b border-gray-400'>
       <h1 className='text-2xl font-bold'>Recovery Starts Today</h1>
       <p className='font-serif font-semibold mb-7'>It's time to make a change. Start exploring your recovery options </p>

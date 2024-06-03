@@ -5,20 +5,30 @@ const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    // Fetch appointments for the doctor
-    axios.get('/api/doctor-appointments')
-      .then(response => setAppointments(response.data))
-      .catch(error => console.error('Error fetching appointments:', error));
+    fetchAppointments();
   }, []);
+
+  const fetchAppointments = () => {
+    const token = localStorage.getItem('token');
+    axios
+      .get('http://localhost:5000/api/appointment/getall', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+      })
+      .then((response) => setAppointments(response.data))
+      .catch((error) => console.error('Error fetching appointments:', error));
+  };
 
   const handleAcceptAppointment = (id) => {
     // Update appointment status to 'Accepted'
-    axios.put(`/api/update-appointment/${id}`, { status: 'Accepted' })
+    axios.put(`http://localhost:5000/api/appointment/update/${id}`, { status: 'CONFIRMED' })
       .then(response => {
         // Update the UI after successful update
         const updatedAppointments = appointments.map(appointment => {
-          if (appointment.id === id) {
-            return { ...appointment, status: 'Accepted' };
+          if (appointment._id === id) {
+            return { ...appointment, status: 'CONFIRMED' };
           }
           return appointment;
         });
@@ -29,12 +39,12 @@ const AppointmentList = () => {
 
   const handleDeclineAppointment = (id) => {
     // Update appointment status to 'Declined'
-    axios.put(`/api/update-appointment/${id}`, { status: 'Declined' })
+    axios.put(`/api/update-appointment/${id}`, { status: 'CANCELLED' })
       .then(response => {
         // Update the UI after successful update
         const updatedAppointments = appointments.map(appointment => {
-          if (appointment.id === id) {
-            return { ...appointment, status: 'Declined' };
+          if (appointment._id === id) {
+            return { ...appointment, status: 'CANCELLED' };
           }
           return appointment;
         });
@@ -56,32 +66,41 @@ const AppointmentList = () => {
           </tr>
         </thead>
         <tbody>
-          {appointments.map(appointment => (
-            <tr key={appointment.id}>
-              <td className="py-2 px-4 border-b">{appointment.patientName}</td>
-              <td className="py-2 px-4 border-b">{appointment.date}</td>
-              <td className="py-2 px-4 border-b">{appointment.status}</td>
-              <td className="py-2 px-4 border-b">
-                {appointment.status === 'Pending' && (
-                  <>
-                    <button
-                      className="bg-green-500 text-white py-1 px-2 rounded mr-2"
-                      onClick={() => handleAcceptAppointment(appointment.id)}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="bg-red-500 text-white py-1 px-2 rounded"
-                      onClick={() => handleDeclineAppointment(appointment.id)}
-                    >
-                      Decline
-                    </button>
-                  </>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {appointments.map(appointment => (
+    <tr key={appointment._id}>
+      <td className="py-2 px-4 border-b">{appointment.patient.firstname}</td>
+      <td className="py-2 px-4 border-b">{appointment.time}</td>
+      <td className="py-2 px-4 border-b">{appointment.status}</td>
+      <td className="py-2 px-4 border-b">
+        {appointment.status === 'PENDING' && (
+          <>
+            <button
+              className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+              onClick={() => handleAcceptAppointment(appointment._id)}
+            >
+              Accept
+            </button>
+            <button
+              className="bg-red-500 text-white py-1 px-2 rounded"
+              onClick={() => handleDeclineAppointment(appointment._id)}
+            >
+              Decline❌
+            </button>
+          </>
+        )}
+        {appointment.status === 'CONFIRMED' && (
+          <button
+            className="bg-blue-500 text-white py-1 px-2 rounded"
+            
+          >
+            Done✔
+          </button>
+        )}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );

@@ -20,6 +20,8 @@ import Emergency from './components/Emergency';
 import Thought from './components/Thought';
 import Appointments from './components/Appointments';
 import AppointmentList from './components/AppointmentList';
+import DoctorQuestionsLists from './components/DoctorQuestionsLists';
+import teacherViewQuestionsResponse from './components/teacherViewQuestionsResponse';
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route  path="therapy" element={<Therapy/>} />
        <Route  path="appointment" element={<Appointments/>} />
         <Route  path="alist" element={<AppointmentList/>} />
+ <Route  path="dolist" element={<DoctorQuestionsLists/>} />
+ <Route  path="response" element={<teacherViewQuestionsResponse/>} />
    
 
          </Route>
