@@ -31,7 +31,7 @@ const Signup = () => {
       if (response.status === 200) {
         console.log(response.data); // Handle success response
         setLoading(false);
-        navigate('/login'); // Navigate to login page after successful signup
+        navigate('/signin'); // Navigate to login page after successful signup
       } else {
         setError(response.data.message || 'Signup failed');
         setLoading(false);

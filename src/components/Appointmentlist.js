@@ -1,89 +1,90 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaClock, FaTag, FaPaw } from 'react-icons/fa';
 
-const Appointmentlist = () => {
+const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const appointmentsPerPage = 2; // You can adjust this number based on your preference
-  const token = localStorage.getItem('Token');
 
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/appointment', {
-          headers: { Authorization: `Bearer ${token}` },
+    // Fetch appointments for the doctor
+    axios.get('/api/doctor-appointments')
+      .then(response => setAppointments(response.data))
+      .catch(error => console.error('Error fetching appointments:', error));
+  }, []);
+
+  const handleAcceptAppointment = (id) => {
+    // Update appointment status to 'Accepted'
+    axios.put(`/api/update-appointment/${id}`, { status: 'Accepted' })
+      .then(response => {
+        // Update the UI after successful update
+        const updatedAppointments = appointments.map(appointment => {
+          if (appointment.id === id) {
+            return { ...appointment, status: 'Accepted' };
+          }
+          return appointment;
         });
-
-        setAppointments(response.data);
-      } catch (error) {
-        console.error('Error fetching appointments:', error);
-      }
-    };
-
-    fetchAppointments();
-  }, [token]);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
+        setAppointments(updatedAppointments);
+      })
+      .catch(error => console.error('Error updating appointment:', error));
   };
 
-  const indexOfLastAppointment = currentPage * appointmentsPerPage;
-  const indexOfFirstAppointment = indexOfLastAppointment - appointmentsPerPage;
-  const currentAppointments = appointments
-    .filter(appointment => appointment.status === 'approved')
-    .slice(indexOfFirstAppointment, indexOfLastAppointment);
+  const handleDeclineAppointment = (id) => {
+    // Update appointment status to 'Declined'
+    axios.put(`/api/update-appointment/${id}`, { status: 'Declined' })
+      .then(response => {
+        // Update the UI after successful update
+        const updatedAppointments = appointments.map(appointment => {
+          if (appointment.id === id) {
+            return { ...appointment, status: 'Declined' };
+          }
+          return appointment;
+        });
+        setAppointments(updatedAppointments);
+      })
+      .catch(error => console.error('Error updating appointment:', error));
+  };
 
   return (
-    <div className="bg-white mt-9 pl-24 rounded-md shadow-md flex items-center justify-center">
-      <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">My Appointments</h1>
-        {currentAppointments.length === 0 ? (
-          <p>No appointments found.</p>
-        ) : (
-          <ul className="list-none">
-            {currentAppointments.map((appointment) => (
-              <li key={appointment._id} className="mb-4 p-4 bg-gray-100 rounded-md">
-                <div className="flex flex-col">
-                  <p className="mb-2">
-                    <FaClock className="mr-2" /> Time: {appointment.time}
-                  </p>
-                  <p className="mb-2">
-                    <FaClock className="mr-2" /> Date: {appointment.date}
-                  </p>
-                  <p className="mb-2">
-                    <FaTag className="mr-2" /> Service: {appointment.serviceId}
-                  </p>
-                  <p className="mb-2">
-                    <FaPaw className="mr-2" /> Pet: {appointment.petId}
-                  </p>
-                  <p className="mb-2">
-                    <FaPaw className="mr-2" /> Status: {appointment.status}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="flex justify-between mt-4">
-          <button
-            onClick={() => paginate(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-4 py-2 bg-gray-300 rounded-md"
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => paginate(currentPage + 1)}
-            disabled={indexOfLastAppointment >= appointments.length}
-            className="px-4 py-2 bg-gray-300 rounded-md"
-          >
-            Next
-          </button>
-        </div>
-      </div>
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Appointment List</h1>
+      <table className="min-w-full bg-white border">
+        <thead>
+          <tr>
+            <th className="py-2 px-4 border-b">Patient Name</th>
+            <th className="py-2 px-4 border-b">Date</th>
+            <th className="py-2 px-4 border-b">Status</th>
+            <th className="py-2 px-4 border-b">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.map(appointment => (
+            <tr key={appointment.id}>
+              <td className="py-2 px-4 border-b">{appointment.patientName}</td>
+              <td className="py-2 px-4 border-b">{appointment.date}</td>
+              <td className="py-2 px-4 border-b">{appointment.status}</td>
+              <td className="py-2 px-4 border-b">
+                {appointment.status === 'Pending' && (
+                  <>
+                    <button
+                      className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+                      onClick={() => handleAcceptAppointment(appointment.id)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="bg-red-500 text-white py-1 px-2 rounded"
+                      onClick={() => handleDeclineAppointment(appointment.id)}
+                    >
+                      Decline
+                    </button>
+                  </>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Appointmentlist;
+export default AppointmentList;

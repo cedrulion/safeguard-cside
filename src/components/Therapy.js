@@ -2,7 +2,7 @@ import React from 'react'
 
 function Therapy() {
   return (
-    <div className='font-Ubuntu'>
+    <div className='font-poppins'>
     <div className='flex justify-center '>
       <div>
         <h1 className=' text-lg my-6'>Help us match you to the right therapits.</h1>
