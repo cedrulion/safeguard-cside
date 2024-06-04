@@ -76,7 +76,7 @@ const DoctorQuestionsPage = () => {
                     {data.map((dataItem, index) => (
                         <tr key={index}>
                             <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
-                            <td className="px-6 py-4 whitespace-nowrap">{dataItem.teacher.firstName} {dataItem.teacher.lastName}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{dataItem.teacher.firstname} {dataItem.teacher.lastname}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{dataItem.studentName}</td>
                             <td className="px-6 py-4 whitespace-nowrap">{dataItem.createdAt}</td>
                             <td className="px-6 py-4 whitespace-nowrap">

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import DashboardLayout from './components/DashboardLayout';
 import Nav from './components/Nav';
@@ -19,7 +20,7 @@ import Questionnaire from './components/Questionnaire';
 import Emergency from './components/Emergency';
 import Thought from './components/Thought';
 import Appointments from './components/Appointments';
-import AppointmentList from './components/AppointmentList';
+import AppointmentList from './components/Appointmentlist';
 import DoctorQuestionsLists from './components/DoctorQuestionsLists';
 import teacherViewQuestionsResponse from './components/teacherViewQuestionsResponse';
 

@@ -56,50 +56,50 @@ const AppointmentList = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Appointment List</h1>
-      <table className="min-w-full bg-white border">
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200 shadow-lg rounded-lg overflow-hidden">
+        <thead className='bg-gray-50'>
           <tr>
-            <th className="py-2 px-4 border-b">Patient Name</th>
-            <th className="py-2 px-4 border-b">Date</th>
-            <th className="py-2 px-4 border-b">Status</th>
-            <th className="py-2 px-4 border-b">Actions</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient Name</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
-        <tbody>
-  {appointments.map(appointment => (
-    <tr key={appointment._id}>
-      <td className="py-2 px-4 border-b">{appointment.patient.firstname}</td>
-      <td className="py-2 px-4 border-b">{appointment.time}</td>
-      <td className="py-2 px-4 border-b">{appointment.status}</td>
-      <td className="py-2 px-4 border-b">
-        {appointment.status === 'PENDING' && (
-          <>
-            <button
-              className="bg-green-500 text-white py-1 px-2 rounded mr-2"
-              onClick={() => handleAcceptAppointment(appointment._id)}
-            >
-              Accept
-            </button>
-            <button
-              className="bg-red-500 text-white py-1 px-2 rounded"
-              onClick={() => handleDeclineAppointment(appointment._id)}
-            >
-              Decline❌
-            </button>
-          </>
-        )}
-        {appointment.status === 'CONFIRMED' && (
-          <button
-            className="bg-blue-500 text-white py-1 px-2 rounded"
-            
-          >
-            Done✔
-          </button>
-        )}
-      </td>
-    </tr>
-  ))}
-</tbody>
+        <tbody className='bg-white divide-y divide-gray-200'>
+          {appointments.map(appointment => (
+            <tr key={appointment._id}>
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.patient.firstname}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.time}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.status}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {appointment.status === 'PENDING' && (
+                  <>
+                    <button
+                      className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+                      onClick={() => handleAcceptAppointment(appointment._id)}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="bg-red-500 text-white py-1 px-2 rounded"
+                      onClick={() => handleDeclineAppointment(appointment._id)}
+                    >
+                      Decline❌
+                    </button>
+                  </>
+                )}
+                {appointment.status === 'CONFIRMED' && (
+                  <button
+                    className="bg-blue-500 text-white py-1 px-2 rounded"
+
+                  >
+                    Done✔
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
 
       </table>
     </div>

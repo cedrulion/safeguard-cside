@@ -3,14 +3,10 @@ import React from 'react';
 const Emergency = () => {
   return (
     <div className="font-roboto">
-      <div className="bg-white rounded-lg shadow-md p-6 m-8 border border-gray-200">
+      <div className="bg-white rounded-lg shadow-md mt-20 p-6 m-8 border border-green-500">
         <h1 className="text-2xl font-bold text-center mb-4">How to Do an Intervention</h1>
         <div className="flex justify-center mb-4">
-          <img 
-            src="https://via.placeholder.com/600x200.png?text=Image" 
-            alt="Intervention" 
-            className="w-full h-auto object-cover rounded-lg"
-          />
+         
         </div>
         <div className="text-center">
           <h2 className="text-xl font-semibold mb-2">It May Be the Nudge People Need to Get Help</h2>
@@ -29,7 +25,7 @@ const Emergency = () => {
           </p>
         </div>
       </div>
-      <div className="bg-blue-100 text-center p-4 mt-4">
+      <div className="bg-indigo-100 text-center p-4 mt-4">
         <p className="text-lg font-semibold mb-2">Are you or a loved one struggling with alcohol or other drugs? Call today to speak confidentially with a recovery expert. Most insurance accepted.</p>
         <div className="flex justify-center items-center gap-2">
           <span className="bg-blue-200 px-4 py-2 rounded-md text-blue-900 font-semibold">

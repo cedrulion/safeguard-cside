@@ -2,19 +2,34 @@ import React from 'react';
 
 function Definition() {
   return (
-    <div className='flex justify-center text-center  pt-32'>
-      <div className='text-3xl font-bold mx-4 '>
-       
-        <ul className="list-none list-inside">
-          <li className="flex items-center">
-            <span className="mr-2">&#10148;</span> 
-            Drug abuse/ Substance abuse: Using chemicals for nontherapeutic effects on the body or mind
-          </li>
-          <li className="flex items-center">
-            <span className="mr-2">&#10148;</span> 
-            Excessive use or misuse of drugs or alcohol for intoxicating or mind-altering effects
-          </li>
-        </ul>
+    <div className='flex align-center mx-60 flex-col  text-center pt-3'>
+      <div className="mt-20">
+        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"1000px"}}>  
+          <div className="flex justify-center items-center">  
+            <p className="text-3xl font-bold text-sky-600">Drug abuse/ Substance abuse</p>
+          </div>
+          <p className="mt-4 text-gray-500 text-base">  
+            The use of illegal drugs or the use of prescription or over-the-counter drugs for purposes other than those for which they are meant to be used, or in excessive amounts. Drug abuse may lead to social, physical, emotional, and job-related problems.
+          </p>
+          <div className="flex justify-center mt-4">  
+            <button className="px-5 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold">
+              <span><i className='fa-solid fa-exclamation-triangle'></i> SAY NO TO USE OF DRUGS</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-10">
+        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"1000px"}}>  
+          <div className="flex justify-center items-center">  
+            <p className="text-3xl font-bold text-sky-600">Drug intoxication</p>
+          </div>
+          <p className="mt-4 text-gray-500 text-base">  
+          Drug intoxication is a temporary state of altered consciousness and behavior caused by the recent use of a psychoactive drug. It can also refer to the effects of ingesting poison or overconsuming substances that are normally harmless.
+          </p>
+          <div className="flex justify-center mt-4">  
+            
+          </div>
+        </div>
       </div>
     </div>
   );

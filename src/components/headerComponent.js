@@ -59,7 +59,7 @@ const HeaderComponent = ({ page, logout }) => {
                         <i className="fa-solid fa-user" style={{ fontSize: "1.5em" }}></i>
                     </div>
                     <div>
-                        <p className="text-gray-500 text-sm">{email}</p>
+                        <p className="text-gray-500 text-sm" style={{fontSize:"1.2em"}}>{email}</p>
                         <p className="text-gray-500 text-sm"><small>{role}</small></p>
                     </div>
                 </div>
@@ -68,31 +68,31 @@ const HeaderComponent = ({ page, logout }) => {
             <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={handleReportingClick}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-calendar-days mr-2"></i>
-                    <p className='text-sm text-gray-500'>Reporting</p>
+                    <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Reporting</p>
                 </div>
             </div>
-            {role === "DOCTOR" || role==="TEACHER" && <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleDoctorReportModal}>
+            {role === "DOCTOR" || role==="TEACHER" && <div className="px- 4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleDoctorReportModal}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-chart-simple mr-2"></i>
-                    <p className='text-sm text-gray-500'>Doctor report</p>
+                    <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Doctor report</p>
                 </div>
             </div>}
             <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleChangePasswordModal}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-lock mr-2"></i>
-                    <p className='text-sm text-gray-500'>Change password</p>
+                    <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Change password</p>
                 </div>
             </div>
             <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleUpdateModal}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-pen mr-2"></i>
-                    <p className='text-sm text-gray-500'>Update user profile</p>
+                    <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Update user profile</p>
                 </div>
             </div>
             <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={() => logout()}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-right-from-bracket mr-2"></i>
-                    <p className='text-sm text-gray-500'>Logout</p>
+                    <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Logout</p>
                 </div>
             </div>
             {/* Modal */}

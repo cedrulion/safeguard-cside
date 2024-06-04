@@ -115,22 +115,22 @@ const Appointments = () => {
       >
         + Book Appointment
       </button>
-      <table className="min-w-full bg-white border">
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200 shadow-lg rounded-lg overflow-hidden mt-5">
+        <thead className='bg-gray-50'>
           <tr>
-            <th className="py-2 px-4 border-b">Doctor's name</th>
-            <th className="py-2 px-4 border-b">Date</th>
-            <th className="py-2 px-4 border-b">Status</th>
-            <th className="py-2 px-4 border-b">Actions</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doctor's name</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
         <tbody className="pl-5">
           {appointments.map((appointment) => (
             <tr key={appointment._id}>
-             <td className="py-2 px-4 border-b">{appointment.doctor.firstname}</td>
-              <td className="py-2 px-4 border-b">{appointment.time}</td>
-              <td className="py-2 px-4 border-b">{appointment.status}</td>
-              <td className="py-2 px-4 border-b">
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.doctor.firstname} {appointment.doctor.lastname}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.time}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{appointment.status}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   className="bg-red-500 text-white py-1 px-2 rounded"
                   onClick={() => handleDeleteAppointment(appointment._id)}
@@ -201,17 +201,17 @@ const Appointments = () => {
             </select>
           </div>
           <button
-  type="button"
-  className="bg-green-500 text-white py-2 px-4 rounded"
-  onClick={handleBookAppointment}
->
-  Book Appointment
-</button>
-</form>
+            type="button"
+            className="bg-green-500 text-white py-2 px-4 rounded"
+            onClick={handleBookAppointment}
+          >
+            Book Appointment
+          </button>
+        </form>
 
-          </Modal>
-        </div>
-      );
-    };
-    
-    export default Appointments;
+      </Modal>
+    </div>
+  );
+};
+
+export default Appointments;
