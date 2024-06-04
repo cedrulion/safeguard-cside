@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Frame from "../Assets/Frame.jpg";
+import "../App.css"
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Nav() {
   return (
     <>
       <ToastContainer />
-      <div id="home" className=''>
+      <div id="home" className='' style={{ fontFamily: 'roboto' }}>
         <div className='hidden sticky top-0 z-10 md:flex justify-between shadow-lg pt-3 m-5'>
           <div className='flex justify-between'>
             <p className="ml-9 hover:bg-green-800 hover:text-white font-bold font-Robotto">

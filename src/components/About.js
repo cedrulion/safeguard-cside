@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Framee from "../Assets/Framee.jpg"
 import Nav from './Nav';
+import "../App.css"
 
 export default function About() {
   const handleScrollTo = (id) => {
@@ -16,7 +17,7 @@ export default function About() {
 
   return (
 
-    <div id="home" className='min-h-screen   '>
+    <div id="home" className='min-h-screen ' style={{ fontFamily: 'roboto' }}>
 <Nav />
 <div className='flex justify-between gap-3'>
 <div className='md:w-1/2 lg:w-1/4 mr-8 mb-6 md:mb-0'>

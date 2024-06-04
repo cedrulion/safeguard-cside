@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Modal from 'react-modal';
+import EditUserModal from './EditUserModal';
+import "../App.css"
 
 const customStyles = {
   content: {
@@ -23,7 +24,7 @@ const UserManagement = () => {
     nID: '',
     email: '',
     role: 'PATIENT',
-    
+
   });
 
   useEffect(() => {
@@ -58,7 +59,7 @@ const UserManagement = () => {
       nID: user.nID,
       email: user.email,
       role: user.role,
-      
+
     });
     setModalIsOpen(true);
   };
@@ -83,12 +84,8 @@ const UserManagement = () => {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
-  };
 
-  const handleSubmit = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
@@ -101,7 +98,7 @@ const UserManagement = () => {
         await axios.post(`http://localhost:5000/api/user/update`, formData, {
           headers: {
             'Content-Type': 'application/json',
-          Authorization: token,
+            Authorization: token,
           },
         });
       } else {
@@ -121,17 +118,11 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10" style={{ fontFamily: 'roboto' }}>
       <h1 className="text-3xl font-bold mb-6">User Management</h1>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-        onClick={() => setModalIsOpen(true)}
-      >
-        Add User
-      </button>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {users.map(user => (
-          <li key={user._id} className="bg-gray-200 p-4 rounded-lg">
+          <li key={user._id} className="bg-gray-200 p-4 rounded-lg mx-3">
             <p className="font-bold">{user.firstname} {user.lastname}</p>
             <p>Email: {user.email}</p>
             <p>Role: {user.role}</p>
@@ -152,51 +143,17 @@ const UserManagement = () => {
           </li>
         ))}
       </ul>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={customStyles}
-        contentLabel="User Modal"
-      >
-        <h2 className="text-2xl font-bold mb-4">{editingUser ? 'Edit User' : 'Add User'}</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col">
-            <label htmlFor="firstname" className="font-bold">First Name</label>
-            <input type="text" id="firstname" name="firstname" value={formData.firstname} onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 mt-1" />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="lastname" className="font-bold">Last Name</label>
-            <input type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 mt-1" />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="nID" className="font-bold">National ID</label>
-            <input type="text" id="nID" name="nID" value={formData.nID} onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 mt-1" />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="email" className="font-bold">Email</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 mt-1" />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="role" className="font-bold">Role</label>
-            <select id="role" name="role" value={formData.role} onChange={handleChange} className="border border-gray-300 rounded px-3 py-2 mt-1">
-              <option value="DOCTOR">Doctor</option>
-              <option value="HOSPITAL">Hospital</option>
-              <option value="TEACHER">Teacher</option>
-              <option value="ADMIN">Admin</option>
-              <option value="PATIENT">Patient</option>
-            </select>
-          </div>
-        
-          <div className="flex justify-end mt-4">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
-              {editingUser ? 'Save Changes' : 'Add User'}
-            </button>
-            <button type="button" onClick={() => setModalIsOpen(false)} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-              Cancel
-            </button>
-          </div>
-        </form>
-      </Modal>
+      <div>
+        {modalIsOpen &&
+          <EditUserModal
+            modalIsOpen={modalIsOpen}
+            toggleModal={() => setModalIsOpen(false)}
+            data={formData}
+            setData={setFormData}
+            updateHandler={handleEdit}
+          />
+        }
+      </div>
     </div>
   );
 };

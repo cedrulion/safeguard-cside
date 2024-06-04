@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DoctorViewModal from './doctorViewQuestionsModal';
 import axios from 'axios';
 import RespondModal from './respondModal';
+import "../App.css"
 
 const DoctorQuestionsPage = () => {
     const [data, setData] = useState([]);
@@ -58,7 +59,7 @@ const DoctorQuestionsPage = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4" style={{ fontFamily: 'roboto' }}>
             <h1 className="text-3xl font-bold mb-4">Doctor Questions to Respond</h1>
 
             {/* Table */}

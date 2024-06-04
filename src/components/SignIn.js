@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Framee from '../Assets/safeguard1.PNG';
 import AuthFooter from './authFooter';
+import "../App.css"
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Signin = () => {
   };
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100'>
+    <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100' style={{ fontFamily: 'roboto' }}>
       <div className='max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center'>
         <div className='md:w-1/2  lg:w-1/3 mr-8 mb-6 md:mb-0'>
           <img src={Framee} alt="logo" className="w-full h-1/2 object-cover " />
@@ -85,7 +86,7 @@ const Signin = () => {
               <div>
                 <button
                   type='submit'
-                  className={`w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className='btn-style'
                   disabled={loading}
                 >
                   {loading ? "Logging in..." : "Log In"}

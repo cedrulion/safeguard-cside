@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaBell, FaCaretDown } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import HeaderComponent from './headerComponent';
-
+import "../App.css"
 const HeaderNavbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -15,17 +15,11 @@ const HeaderNavbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white shadow-md">
+    <div className="flex items-center justify-between p-4 bg-white shadow-md" style={{ fontFamily: 'roboto' }}>
       <div>
         <h1 className='text-xl font-bold ml-6'>SAFEGUARD</h1>
       </div>
-      <div className="flex items-center ml-5">
-        <input
-          type="text"
-          placeholder="Search here..."
-          className="px-2 py-2 border border-gray-300 rounded-md"
-        />
-      </div>
+    
       <div className="flex items-center relative">
         <div className="flex items-center cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}>
           <div

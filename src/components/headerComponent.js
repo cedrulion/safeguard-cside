@@ -3,6 +3,7 @@ import Modal from './reportModal';
 import ChangeUserPasswordModal from './changeUserPassword';
 import UpdateUserModal from './updateUserModal';
 import DoctorReportModal from './doctorReportModal';
+import "../App.css"
 
 const HeaderComponent = ({ page, logout }) => {
     const [user, setUser] = useState('')
@@ -52,7 +53,7 @@ const HeaderComponent = ({ page, logout }) => {
     }, [])
 
     return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden" style={{ fontFamily: 'inter' }}>
+        <div className="bg-white rounded-lg shadow-md overflow-hidden" style={{ fontFamily: 'roboto' }}>
             <div className="px-4 py-3">
                 <div className="flex flex-row">
                     <div className='mt-2 mr-3'>
@@ -65,13 +66,13 @@ const HeaderComponent = ({ page, logout }) => {
                 </div>
             </div>
             <hr />
-            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={handleReportingClick}>
-                <div className='flex flex-row items-center'>
+            {(role === "DOCTOR"||role==="ADMIN")  && <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={handleReportingClick}>
+             <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-calendar-days mr-2"></i>
                     <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Reporting</p>
                 </div>
-            </div>
-            {role === "DOCTOR" || role==="TEACHER" && <div className="px- 4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleDoctorReportModal}>
+            </div>}
+            {(role === "DOCTOR" || role==="ADMIN")  && <div className="px- 4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleDoctorReportModal}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-chart-simple mr-2"></i>
                     <p className='text-sm text-gray-500 mx-3' style={{fontSize:"1.1em"}}>Doctor report</p>

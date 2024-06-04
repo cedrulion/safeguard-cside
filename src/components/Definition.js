@@ -1,10 +1,11 @@
 import React from 'react';
+import "../App.css"
 
 function Definition() {
   return (
-    <div className='flex align-center mx-60 flex-col  text-center pt-3'>
+    <div className='flex align-center mx-20 flex-col  text-center pt-3' style={{ fontFamily: 'roboto' }}>
       <div className="mt-20">
-        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"1000px"}}>  
+        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"700px"}}>  
           <div className="flex justify-center items-center">  
             <p className="text-3xl font-bold text-sky-600">Drug abuse/ Substance abuse</p>
           </div>
@@ -19,7 +20,7 @@ function Definition() {
         </div>
       </div>
       <div className="mt-10">
-        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"1000px"}}>  
+        <div className="rounded-xl shadow-md bg-white overflow-hidden px-4 py-5 border border-green-500" style={{width:"700px"}}>  
           <div className="flex justify-center items-center">  
             <p className="text-3xl font-bold text-sky-600">Drug intoxication</p>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "../App.css"
 
 // Modal component to display thank you message
 const Modal = ({ isOpen, onClose }) => {
@@ -225,7 +226,7 @@ const Questions = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100" style={{ fontFamily: 'roboto' }}>
       <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-2xl">
         {step === 1 && <Step1 formData={formData} setFormData={setFormData} nextStep={nextStep} />}
         {step === 2 && <EnterNameStep formData={formData} setFormData={setFormData} nextStep={nextStep} prevStep={prevStep} />}

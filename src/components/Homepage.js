@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Frame from "../Assets/Frame.jpg"
 import Nav from './Nav';
+import "../App.css"
 
 export default function Homepage() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Homepage() {
 
   return (
 
-    <div id="home" className='min-h-screen'>
+    <div id="home" className='min-h-screen' style={{ fontFamily: 'roboto' }}>
       <Nav />
       <div class="max-w-2xl px-4 py-8 ml-6" >
         <p class="text-5xl text-black font-bold">Embrace </p>

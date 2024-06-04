@@ -1,8 +1,9 @@
 import React from 'react';
+import "../App.css"
 
 const ViewResponseModal = ({ isOpen, onClose, data }) => {
     return (
-        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'inter' }}>
+        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'roboto' }}>
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-2xl w-full max-w-3xl">
                 <div className="bg-green-500 text-white px-8 py-4 rounded-t-lg">

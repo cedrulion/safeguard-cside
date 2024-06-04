@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DoctorViewModal from './doctorViewQuestionsModal';
 import ViewResponseModal from './teacherResponseModal';
+import "../App.css"
 
 const TeacherResponseTable = () => {
     const [data, setData] = useState([]);
@@ -65,7 +66,7 @@ const TeacherResponseTable = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4" style={{ fontFamily: 'roboto' }}>
             <h1 className="text-2xl font-semibold mb-4">Teacher's View of Responses</h1>
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">

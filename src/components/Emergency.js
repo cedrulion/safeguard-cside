@@ -1,8 +1,9 @@
 import React from 'react';
+import "../App.css"
 
 const Emergency = () => {
   return (
-    <div className="font-roboto">
+    <div className="font-roboto" style={{ fontFamily: 'roboto' }}>
       <div className="bg-white rounded-lg shadow-md mt-20 p-6 m-8 border border-green-500">
         <h1 className="text-2xl font-bold text-center mb-4">How to Do an Intervention</h1>
         <div className="flex justify-center mb-4">
@@ -32,7 +33,7 @@ const Emergency = () => {
             For Help, Call:
           </span>
           <span className="bg-yellow-200 px-4 py-2 rounded-md text-yellow-900 font-semibold">
-            1-888-410-0284
+            2575
           </span>
         </div>
       </div>

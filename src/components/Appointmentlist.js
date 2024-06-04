@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../App.css"
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -54,7 +55,7 @@ const AppointmentList = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4" style={{ fontFamily: 'roboto' }}>
       <h1 className="text-2xl font-bold mb-4">Appointment List</h1>
       <table className="min-w-full divide-y divide-gray-200 shadow-lg rounded-lg overflow-hidden">
         <thead className='bg-gray-50'>

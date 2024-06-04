@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import { FaBars, FaUser, FaSignOutAlt, FaSortDown, FaSearch } from 'react-icons/fa';
 import Footer from './Footer';
 import HeaderNavbar from './header';
+import "../App.css"
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);

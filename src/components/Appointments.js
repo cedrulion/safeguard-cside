@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../App.css"
 
 Modal.setAppElement('#root'); // Set the root element for accessibility
 
@@ -106,7 +107,7 @@ const Appointments = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4" style={{ fontFamily: 'roboto' }}>
       <ToastContainer />
       <h1 className="text-2xl font-bold mb-4">Appointments</h1>
       <button

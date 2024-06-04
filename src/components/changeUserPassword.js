@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import "../App.css"
 
 const ChangeUserPasswordModal = ({ modalIsOpen, toggleModal }) => {
     const [data, setData] = useState({
@@ -74,7 +75,7 @@ const ChangeUserPasswordModal = ({ modalIsOpen, toggleModal }) => {
     };
 
     return (
-        <div className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${modalIsOpen ? 'block' : 'hidden'}`}>
+        <div className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ${modalIsOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'roboto' }}>
             <div className="bg-white p-8 rounded-lg w-full max-w-md">
                 <h3 className="text-green-500 text-2xl mb-4">Change Password</h3>
                 {errorMsg && (

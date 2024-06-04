@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import Framee from '../Assets/Framee.jpg';
+import "../App.css"
 
 const Activation = () => {
   const [email, setEmail] = useState("");
@@ -54,7 +55,7 @@ const Activation = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center ">
+    <div className="min-h-screen flex justify-center items-center " style={{ fontFamily: 'roboto' }}>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center">
         <div className="md:w-1/2 lg:w-1/3 mr-8 mb-6 md:mb-0">
           <img src={Framee} alt="logo" className="w-full h-auto object-cover rounded-lg shadow-md" />

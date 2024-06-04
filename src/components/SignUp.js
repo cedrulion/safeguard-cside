@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Framee from '../Assets/safeguard1.PNG';
 import axios from 'axios';
 import AuthFooter from './authFooter';
+import "../App.css"
 
 const Signup = () => {
   const [selectedRole, setSelectedRole] = useState('PATIENT');
@@ -46,7 +47,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100'>
+      <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100' style={{ fontFamily: 'roboto' }}>
         <div className='max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center'>
           <div className='w-full mr-8 mb-6 md:mb-0'>
             <img src={Framee} alt="logo" className="w-full h- object-cover " />
@@ -76,28 +77,12 @@ const Signup = () => {
                   <label htmlFor='password' className='block text-sm font-medium text-gray-700'>Password</label>
                   <input type='password' id='password' name='password' placeholder='Password' className='input-style' />
                 </div>
-                <div>
-                  <label htmlFor='role' className='block text-sm font-medium text-gray-700'>Select Role</label>
-                  <select
-                    id='role'
-                    name='role'
-                    value={selectedRole}
-                    onChange={handleRoleChange}
-                    className='input-style'
-                  >
-                    <option value='PATIENT'>Patient</option>
-                    <option value='DOCTOR'>Doctor</option>
-                    <option value='HOSPITAL'>Hospital</option>
-                    <option value='TEACHER'>Teacher</option>
-                    <option value='ADMIN'>Admin</option>
-                  </select>
-                </div>
-                <div>
-                  <button type='submit' disabled={loading} className='btn-style'>
+              </form>
+              <div>
+                  <button type='submit' disabled={loading} className='btn-style mt-5'>
                     {loading ? 'Signing Up...' : 'Sign Up'}
                   </button>
                 </div>
-              </form>
               <div className='mt-2 text-sm text-gray-600'>
                 <p>Already have an account? <Link to='/signin' className='text-green-600 hover:underline'>Log in here</Link></p>
               </div>

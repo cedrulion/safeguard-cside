@@ -7,6 +7,7 @@ import {
   faSignOutAlt, faArrowRight, faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import 'react-toastify/dist/ReactToastify.css';
+import "../App.css"
 
 const Sidebar = ({ onClose }) => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Sidebar = ({ onClose }) => {
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     setRole(loggedInUser.role);
-    if(role==="DOCTOR"){
+    if(loggedInUser.role==="DOCTOR"){
       navigate("/dashboard/alist")
       setActiveItem("/dashboard/alist")
     }
@@ -43,14 +44,15 @@ const Sidebar = ({ onClose }) => {
         { path: '/dashboard/dolist', icon: faHeart, label: 'QUESTIONS LIST' }
       ],
       TEACHER: [
-        { path: '/dashboard/browse', icon: faSearch, label: 'BROWSE' },
-        { path: '/dashboard/question', icon: faQuestionCircle, label: 'THERAPY' },
-        { path: '/dashboard/response', icon: faQuestionCircle, label: 'RESPONSE' },
-        { path: '/dashboard/emergency', icon: faExclamationTriangle, label: 'EMERGENCY' }
+        { path: '/dashboard/browse', icon: "fa-search", label: 'BROWSE' },
+        { path: '/dashboard/question', icon: "fa-notes-medical", label: 'THERAPY' },
+        { path: '/dashboard/response', icon: "fa-question-circle", label: 'RESPONSE' },
+        { path: '/dashboard/emergency', icon: "fa-exclamation-triangle", label: 'EMERGENCY' },
       ],
       ADMIN: [
 
-        { path: '/dashboard/usrman', icon: faQuestionCircle, label: 'MANAGE USERS' }
+        { path: '/dashboard/usrman', icon: faQuestionCircle, label: 'MANAGE USERS' },
+        { path: '/dashboard/adduser', icon: faQuestionCircle, label: 'ADD USERS' }
       ],
       PATIENT: [
         { path: '/dashboard/definition', icon: "fa-desktop", label: 'DEFINITION' },
@@ -64,7 +66,7 @@ const Sidebar = ({ onClose }) => {
     };
 
     return (menuItems[role] || []).map(item => (
-      <li key={item.path} className="p-4 hover:bg-green-800 hover:text-white" style={{backgroundColor: activeItem === item.path ? "black" : "",width:"100%"}}>
+      <li key={item.path} className="p-4 hover:bg-green-800 hover:text-white" style={{backgroundColor: activeItem === item.path ? "black" : "",width:"100%",fontFamily:"roboto"}} >
         <Link to={item.path} onClick={() => handleItemClick(item.path)} className="flex items-start space-x-2">
         <i className={`fa-solid ${item.icon} mt-1`}></i>
           <span className="text-lg">{item.label}</span>

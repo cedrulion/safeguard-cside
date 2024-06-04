@@ -1,4 +1,5 @@
 import React from 'react';
+import "../App.css"
 
 const DoctorViewModal = ({ isOpen, onClose, answers }) => {
     const questions = [
@@ -55,7 +56,7 @@ const DoctorViewModal = ({ isOpen, onClose, answers }) => {
     ];
 
     return (
-        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'inter' }}>
+        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'roboto' }}>
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg w-full max-w-3xl h-full max-h-[80vh] overflow-hidden">
                 <div className="flex flex-col h-full">

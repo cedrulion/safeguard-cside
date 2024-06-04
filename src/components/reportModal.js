@@ -3,6 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import generatePDF from '../helpers/pdfReport';
+import "../App.css"
 
 
 const Modal = ({ isOpen, onClose }) => {
@@ -31,7 +32,7 @@ const Modal = ({ isOpen, onClose }) => {
     };
 
     return (
-        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'inter' }}>
+        <div className={`fixed inset-0 z-50 ${isOpen ? 'block' : 'hidden'}`} style={{ fontFamily: 'roboto' }}>
             <div className="fixed inset-0 bg-black opacity-50"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg w-96">
                 <div className="flex justify-between items-center mb-4">

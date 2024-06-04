@@ -1,8 +1,9 @@
 import React from 'react';
+import "../App.css"
 
 const Thought = () => {
   return (
-    <div className="font-roboto text-sm">
+    <div className="font-roboto text-sm" style={{ fontFamily: 'roboto' }}>
       <div className="bg-white rounded-lg shadow-md p-6 m-8 border border-gray-200">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-left text-blue-600">Twenty Four Hours a Day</h1>
