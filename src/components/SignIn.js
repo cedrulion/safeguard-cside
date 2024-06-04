@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Framee from '../Assets/Framee.jpg';
+import Framee from '../Assets/safeguard1.PNG';
+import AuthFooter from './authFooter';
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -46,13 +47,13 @@ const Signin = () => {
   };
 
   return (
-    <div className='min-h-screen flex justify-center items-center bg-gray-100'>
+    <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100'>
       <div className='max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center'>
-        <div className='md:w-1/2 lg:w-1/3 mr-8 mb-6 md:mb-0'>
-          <img src={Framee} alt="logo" className="w-full h-auto object-cover rounded-lg shadow-md" />
+        <div className='md:w-1/2  lg:w-1/3 mr-8 mb-6 md:mb-0'>
+          <img src={Framee} alt="logo" className="w-full h-1/2 object-cover " />
         </div>
         <div className='md:w-1/2 lg:w-2/3'>
-          <div className='bg-white p-8 rounded-lg shadow-md'>
+          <div className='bg-white p-8 rounded-t-xl shadow-md'>
             <h2 className='text-2xl font-semibold mb-4'>Log In</h2>
             <form onSubmit={handleSubmit}>
               <div className='mb-4'>
@@ -84,7 +85,7 @@ const Signin = () => {
               <div>
                 <button
                   type='submit'
-                  className={`w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:bg-green-700 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                   disabled={loading}
                 >
                   {loading ? "Logging in..." : "Log In"}
@@ -96,9 +97,17 @@ const Signin = () => {
               <p>Activate account <Link to='/activate' className='text-green-600 hover:underline'>Activate</Link></p>
             </div>
           </div>
+          <div className='bg-green-600 rounded-b-xl' style={{ width: "100%" }}>
+              <div className='flex justify-center '>
+                <span className="text-black text-2xl ">SAFE</span><span className="text-white text-2xl">GUARD</span>
+              </div>
+            </div>
         </div>
       </div>
       <ToastContainer position="top-center" autoClose={6000} />
+      <div className='mt-5' style={{ marginLeft: "280px" }}>
+          <AuthFooter />
+        </div>
     </div>
   );
 };
