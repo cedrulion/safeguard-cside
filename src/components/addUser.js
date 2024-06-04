@@ -9,9 +9,8 @@ const AddUser = () => {
         firstname: "",
         lastname: "",
         nID: "",
-        role: "",
+        role: "DOCTOR",
         email: "",
-        password: "",
     });
 
     const handleSubmit = async (e) => {
@@ -116,18 +115,6 @@ const AddUser = () => {
                                     value={data.email}
                                     required
                                     onChange={(e) => setData({ ...data, email: e.target.value })}
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="password" className="block mb-2">PASSWORD</label>
-                                <input
-                                    type="password"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    id="phone"
-                                    placeholder="Enter the officer password"
-                                    value={data.password}
-                                    required
-                                    onChange={(e) => setData({ ...data, password: e.target.value })}
                                 />
                             </div>
                             <div className="mb-4">

@@ -14,7 +14,7 @@ const generatePDF = (data) => {
   doc.setFontSize(12);
 
   doc.addImage(Logo, "PNG", 10, 10, 30, 30);
-  doc.text("MODERN EBM", doc.internal.pageSize.width - 50, 25, null, null, "right");
+  doc.text("SAFEGUARD", doc.internal.pageSize.width - 50, 25, null, null, "right");
 
   const currentDate = new Date().toLocaleString();
   doc.text(`Date Printed: ${currentDate}`, doc.internal.pageSize.width - 10, 45, null, null, "right");
@@ -38,10 +38,10 @@ const generatePDF = (data) => {
   });
 
   doc.setFontSize(12);
-  doc.text("This report contains symptom-related information.", 10, doc.lastAutoTable.finalY + 10);
+
 
   doc.setFontSize(8);
-  doc.text("SafeGuard Organization Address", 10, doc.internal.pageSize.height - 10);
+  doc.text("Kigali,Ewanda P.O BOX ", 10, doc.internal.pageSize.height - 10);
 
   const totalPages = doc.internal.getNumberOfPages();
   for (let i = 1; i <= totalPages; i++) {

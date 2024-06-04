@@ -21,13 +21,17 @@ const Sidebar = ({ onClose }) => {
       navigate("/dashboard/alist")
       setActiveItem("/dashboard/alist")
     }
-    else if(role==="PATIENT"){
+    else if(loggedInUser.role==="PATIENT"){
       navigate("/dashboard/definition")
       setActiveItem("/dashboard/definition")
     }
-    else if(role==="TEACHER"){
+    else if(loggedInUser.role==="TEACHER"){
       navigate("/dashboard/browse")
       setActiveItem("/dashboard/browse")
+    }
+    else{
+      navigate("/dashboard/usrman")
+      setActiveItem("/dashboard/usrman")
     }
   }, []);
 

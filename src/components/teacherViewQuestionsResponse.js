@@ -84,7 +84,7 @@ const TeacherResponseTable = () => {
                             <tr key={item._id}>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.studentName}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(item.postedOn).toLocaleDateString()}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(item.createdAt).toLocaleDateString()}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {item.doctorEvaluation === "" ? (
                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
