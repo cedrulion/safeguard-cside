@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Modal from './reportModal';
 import ChangeUserPasswordModal from './changeUserPassword';
 import UpdateUserModal from './updateUserModal';
+import DoctorReportModal from './doctorReportModal';
 
 const HeaderComponent = ({ page, logout }) => {
     const [user, setUser] = useState('')
@@ -10,9 +11,13 @@ const HeaderComponent = ({ page, logout }) => {
     const [showModal, setShowModal] = useState(false);
     const [modalChangePasswordIsOpen, setChangePasswordModalIsOpen] = useState(false)
     const [modalUpdateIsOpen, setModalUpdateIsOpen] = useState(false)
+    const [doctorReportModal, setDoctorReportModal] = useState(false)
     const toggleUpdateModal = () => {
         setModalUpdateIsOpen(!modalUpdateIsOpen);
     };
+    const toggleDoctorReportModal = () => {
+        setDoctorReportModal(!doctorReportModal)
+    }
     const [data, setData] = useState({
         firstname: "",
         lastname: "",
@@ -29,6 +34,7 @@ const HeaderComponent = ({ page, logout }) => {
             nID: userData.nID,
             email: userData.email
         })
+        setRole(JSON.parse(localStorage.getItem('loggedInUser')).role)
         setEmail(userData.email)
     }, [])
     const toggleChangePasswordModal = () => {
@@ -50,7 +56,7 @@ const HeaderComponent = ({ page, logout }) => {
             <div className="px-4 py-3">
                 <div className="flex flex-row">
                     <div className='mt-2 mr-3'>
-                    <i className="fa-solid fa-user" style={{fontSize:"1.5em"}}></i>
+                        <i className="fa-solid fa-user" style={{ fontSize: "1.5em" }}></i>
                     </div>
                     <div>
                         <p className="text-gray-500 text-sm">{email}</p>
@@ -59,21 +65,27 @@ const HeaderComponent = ({ page, logout }) => {
                 </div>
             </div>
             <hr />
-            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100"  onClick={handleReportingClick}>
+            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={handleReportingClick}>
                 <div className='flex flex-row items-center'>
                     <i className="fa-solid fa-calendar-days mr-2"></i>
                     <p className='text-sm text-gray-500'>Reporting</p>
                 </div>
             </div>
-            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100"  onClick={toggleChangePasswordModal}>
+            {role === "DOCTOR" || role==="TEACHER" && <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleDoctorReportModal}>
                 <div className='flex flex-row items-center'>
-                <i className="fa-solid fa-lock mr-2"></i>
+                    <i className="fa-solid fa-chart-simple mr-2"></i>
+                    <p className='text-sm text-gray-500'>Doctor report</p>
+                </div>
+            </div>}
+            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleChangePasswordModal}>
+                <div className='flex flex-row items-center'>
+                    <i className="fa-solid fa-lock mr-2"></i>
                     <p className='text-sm text-gray-500'>Change password</p>
                 </div>
             </div>
-            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100"  onClick={toggleUpdateModal}>
+            <div className="px-4 py-3 cursor-pointer hover:bg-gray-100" onClick={toggleUpdateModal}>
                 <div className='flex flex-row items-center'>
-                <i className="fa-solid fa-pen mr-2"></i>
+                    <i className="fa-solid fa-pen mr-2"></i>
                     <p className='text-sm text-gray-500'>Update user profile</p>
                 </div>
             </div>
@@ -86,20 +98,26 @@ const HeaderComponent = ({ page, logout }) => {
             {/* Modal */}
             <Modal isOpen={showModal} onClose={() => setShowModal(false)} />
             <div>
-                    <ChangeUserPasswordModal
-                        modalIsOpen={modalChangePasswordIsOpen}
-                        toggleModal={toggleChangePasswordModal}
-                    />
-                </div>
-                <div>
-                    <UpdateUserModal
-                        modalIsOpen={modalUpdateIsOpen}
-                        toggleModal={toggleUpdateModal}
-                        data={data}
-                        setData={setData}
-                        setUser={setUser}
-                    />
-                </div>
+                <ChangeUserPasswordModal
+                    modalIsOpen={modalChangePasswordIsOpen}
+                    toggleModal={toggleChangePasswordModal}
+                />
+            </div>
+            <div>
+                <UpdateUserModal
+                    modalIsOpen={modalUpdateIsOpen}
+                    toggleModal={toggleUpdateModal}
+                    data={data}
+                    setData={setData}
+                    setUser={setUser}
+                />
+            </div>
+            <div>
+                <DoctorReportModal
+                    isOpen={doctorReportModal}
+                    onClose={toggleDoctorReportModal}
+                />
+            </div>
         </div>
     );
 };
