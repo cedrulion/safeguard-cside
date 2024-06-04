@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
@@ -7,6 +8,7 @@ import "../App.css"
 
 const Activation = () => {
   const [email, setEmail] = useState("");
+  const navigate=useNavigate()
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPasswordInput, setShowPasswordInput] = useState(false);
@@ -46,6 +48,7 @@ const Activation = () => {
       const response = await axios.post("http://localhost:5000/api/user/activatepassword", { id: user._id, password });
       toast.success('Password created successfully!');
       setShowPasswordInput(false);
+      navigate("/signin")
     } catch (error) {
       console.log(error);
       toast.error('Failed to create password');
@@ -118,11 +121,7 @@ const Activation = () => {
                 <button
                   type="button"
                   className="btn btn-outline-secondary mt-2"
-                  onClick={() => {
-                    setEmail("");
-                    setPassword("");
-                    setShowPasswordInput(false);
-                  }}
+                  onClick={() => navigate("/signin")}
                 >
                   Go Back
                 </button>

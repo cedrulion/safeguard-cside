@@ -10,7 +10,7 @@ function Game() {
           <a
             
             className="block bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600 transition duration-200"
-            onClick={()=>window.location.href="https://cracksintheice.org.au/tools-for-teachers/pure-rush-an-interactive-drug-education-game"}
+            onClick={()=>window.location.href="https://positivechoices.org.au/pure-rush/index.html"}
           >
             Play Pure Rush in Your Browser
           </a>
