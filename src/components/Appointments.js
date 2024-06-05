@@ -90,7 +90,7 @@ const Appointments = () => {
   const handleDeleteAppointment = (id) => {
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:5000/api/appointments/erase/${id}`, {
+      .delete(`http://localhost:5000/api/appointment/erase/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: token,
@@ -98,7 +98,7 @@ const Appointments = () => {
       })
       .then((response) => {
         toast.success('Appointment deleted successfully!');
-        fetchAppointments(); // Fetch appointments again to update the list
+        fetchAppointments();
       })
       .catch((error) => {
         toast.error('Error deleting appointment.');
@@ -133,7 +133,8 @@ const Appointments = () => {
               <td className="px-6 py-4 whitespace-nowrap">{appointment.status}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
-                  className="bg-red-500 text-white py-1 px-2 rounded"
+                  disabled={appointment.status === "CONFIRMED"?true:false}
+                  className={appointment.status === "CONFIRMED"?"bg-gray-200 text-black py-1 px-2 rounded":"bg-red-500 text-white py-1 px-2 rounded"}
                   onClick={() => handleDeleteAppointment(appointment._id)}
                 >
                   Delete
