@@ -44,8 +44,8 @@ const Sidebar = ({ onClose }) => {
     const menuItems = {
       DOCTOR: [
 
-        { path: '/dashboard/alist', icon: faHeart, label: 'APPOINTMENTS' },
-        { path: '/dashboard/dolist', icon: faHeart, label: 'QUESTIONS LIST' }
+        { path: '/dashboard/alist', icon: "fa-calendar-check", label: 'APPOINTMENTS' },
+        { path: '/dashboard/dolist', icon: "fa-list", label: 'QUESTIONS LIST' }
       ],
       TEACHER: [
         { path: '/dashboard/browse', icon: "fa-search", label: 'BROWSE' },
@@ -55,8 +55,8 @@ const Sidebar = ({ onClose }) => {
       ],
       ADMIN: [
 
-        { path: '/dashboard/usrman', icon: faQuestionCircle, label: 'MANAGE USERS' },
-        { path: '/dashboard/adduser', icon: faQuestionCircle, label: 'ADD USERS' }
+        { path: '/dashboard/usrman', icon: "fa-people-roof", label: 'MANAGE USERS' },
+        { path: '/dashboard/adduser', icon: "fa-bars-progress", label: 'ADD USERS' }
       ],
       PATIENT: [
         { path: '/dashboard/definition', icon: "fa-desktop", label: 'DEFINITION' },
@@ -70,7 +70,7 @@ const Sidebar = ({ onClose }) => {
     };
 
     return (menuItems[role] || []).map(item => (
-      <li key={item.path} className="p-4 hover:bg-green-800 hover:text-white" style={{backgroundColor: activeItem === item.path ? "black" : "",width:"100%",fontFamily:"roboto"}} >
+      <li key={item.path} className="p-4 hover:bg-green-800 hover:text-white" style={{backgroundColor: activeItem === item.path ? "black" : "",width:"100%",fontFamily:"roboto",borderLeft: activeItem === item.path?"4px solid #3b82f6":""}} >
         <Link to={item.path} onClick={() => handleItemClick(item.path)} className="flex items-start space-x-2">
         <i className={`fa-solid ${item.icon} mt-1`}></i>
           <span className="text-lg">{item.label}</span>

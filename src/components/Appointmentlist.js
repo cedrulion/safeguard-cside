@@ -23,10 +23,13 @@ const AppointmentList = () => {
   };
 
   const handleAcceptAppointment = (id) => {
-    // Update appointment status to 'Accepted'
-    axios.put(`http://localhost:5000/api/appointment/update/${id}`, { status: 'CONFIRMED' })
+    axios.put(`http://localhost:5000/api/appointment/update/${id}`, { status: 'CONFIRMED' }, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
       .then(response => {
-        // Update the UI after successful update
         const updatedAppointments = appointments.map(appointment => {
           if (appointment._id === id) {
             return { ...appointment, status: 'CONFIRMED' };
@@ -39,10 +42,13 @@ const AppointmentList = () => {
   };
 
   const handleDeclineAppointment = (id) => {
-    // Update appointment status to 'Declined'
-    axios.put(`/api/update-appointment/${id}`, { status: 'CANCELLED' })
+    axios.put(`http://localhost:5000/api/appointment/update/${id}`, { status: 'CANCELLED' },{
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
       .then(response => {
-        // Update the UI after successful update
         const updatedAppointments = appointments.map(appointment => {
           if (appointment._id === id) {
             return { ...appointment, status: 'CANCELLED' };
