@@ -43,11 +43,13 @@ const Sidebar = ({ onClose }) => {
   const renderMenuItems = () => {
     const menuItems = {
       DOCTOR: [
-
+        { path: '/dashboard/doctor/stats', icon: "fa-home", label: 'DASHBOARD' },
         { path: '/dashboard/alist', icon: "fa-calendar-check", label: 'APPOINTMENTS' },
-        { path: '/dashboard/dolist', icon: "fa-list", label: 'QUESTIONS LIST' }
+        { path: '/dashboard/dolist', icon: "fa-list", label: 'QUESTIONS LIST' },
+        { path: '/dashboard/doctor/questionlist', icon: "fa-bars-progress", label: 'ANSWERED QUESTIONS' }
       ],
       TEACHER: [
+        { path: '/dashboard/teacher/stats', icon: "fa-home", label: 'DASHBOARD' },
         { path: '/dashboard/browse', icon: "fa-search", label: 'BROWSE' },
         { path: '/dashboard/question', icon: "fa-notes-medical", label: 'THERAPY' },
         { path: '/dashboard/response', icon: "fa-question-circle", label: 'RESPONSE' },
@@ -55,8 +57,10 @@ const Sidebar = ({ onClose }) => {
       ],
       ADMIN: [
 
+        { path: '/dashboard/admin/stats', icon: "fa-home", label: 'DASHBOARD' },
         { path: '/dashboard/usrman', icon: "fa-people-roof", label: 'MANAGE USERS' },
-        { path: '/dashboard/adduser', icon: "fa-bars-progress", label: 'ADD USERS' }
+        { path: '/dashboard/admin/patient', icon: "fa-notes-medical", label: 'PATIENTS DETAILS' },
+        { path: '/dashboard/admin/inquiries', icon: "fa-bars-progress", label: 'INQUIRIES SENT' }
       ],
       PATIENT: [
         { path: '/dashboard/definition', icon: "fa-desktop", label: 'DEFINITION' },

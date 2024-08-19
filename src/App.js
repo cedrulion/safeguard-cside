@@ -14,7 +14,7 @@ import Browse from './components/Browse';
 import Definition from './components/Definition';
 import Therapy from './components/Therapy';
 import Game from './components/Game';
-import UserManagement from './components/UserManagement';
+// import UserManagement from './components/UserManagement';
 import Activation from './components/Activation';
 import Questionnaire from './components/Questionnaire';
 import Emergency from './components/Emergency';
@@ -24,6 +24,12 @@ import AppointmentList from './components/Appointmentlist';
 import DoctorQuestionsLists from './components/DoctorQuestionsLists';
 import AddUser from './components/addUser';
 import TeacherViewQuestionsResponse from './components/teacherViewQuestionsResponse';
+import AdminDashboard from './components/adminDashboard';
+import UserManagement from './components/userManagements';
+import PatientsManagement from './components/patientManagement';
+import InquiriesManagement from './components/inquiriesSent';
+import TeacherDashboard from './components/teacherDashboard';
+import DoctorDashboard from './components/doctorDashboard';
 
 function App() {
   return (
@@ -54,6 +60,13 @@ function App() {
           <Route path="alist" element={<AppointmentList />} />
           <Route path="dolist" element={<DoctorQuestionsLists />} />
           <Route path="response" element={<TeacherViewQuestionsResponse />} />
+          <Route path="admin/stats" element={<AdminDashboard />} />
+          <Route path="admin/patient" element={<PatientsManagement />} />
+          <Route path="admin/inquiries" element={<InquiriesManagement />} />
+          <Route path="teacher/stats" element={<TeacherDashboard />} />
+          <Route path="doctor/stats" element={<DoctorDashboard />} />
+          <Route path=" doctor/questionlist" element={<TeacherDashboard />} />
+         
 
 
         </Route>

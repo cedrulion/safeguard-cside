@@ -27,7 +27,7 @@ const RespondModal = ({ isOpen, onClose, data }) => {
                   },
              }
              console.log(config);
-            const response = await axios.put(`http://localhost:5000/api/symptoms/evaluate/${data._id}`, { testResult: selectedOption, doctorEvaluation: description },config);
+            const response = await axios.put(`http://localhost:5000/api/symptoms/evaluate/${data._id}`, { doctorEvaluation: selectedOption, testResult: description },config);
             console.log(response.data);
             toast.success("Successfully responded")
             setShowTakeAction(true);
@@ -80,9 +80,9 @@ const RespondModal = ({ isOpen, onClose, data }) => {
                                     onChange={handleOptionChange}
                                 >
                                     <option value="">Choose an option</option>
-                                    <option value="needMedicalAttention">Need Medical Attention</option>
-                                    <option value="continueConsulting">Continue Consulting the Student</option>
-                                    <option value="normal">Normal</option>
+                                    <option value="NEGATIVE">NEGATIVE</option>
+                                    <option value="POSITIVE">POSITIVE</option>
+                                    <option value="NEUTRAL">NEUTRAL</option>
                                 </select>
                             </div>
                             <div className="mb-6">
