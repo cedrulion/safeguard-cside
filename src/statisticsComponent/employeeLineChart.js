@@ -3,7 +3,6 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 const EmployeeLineChart = ({statspermonth}) => {
-    console.log(statspermonth);
   const chartRef = useRef(null);
 
   useEffect(() => {

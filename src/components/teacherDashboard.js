@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaArrowUp, FaArrowDown, FaExchangeAlt } from 'react-icons/fa';
 import { Chart, registerables } from 'chart.js';
 import EmployeeLineChart from '../statisticsComponent/employeeLineChart';
-import PercentageEmployeeSalesDoughnutChart from '../statisticsComponent/percentageChart';
+import PercentageCharts from '../statisticsComponent/percentageTeacherCharts';
 
 // Register the required components
 Chart.register(...registerables);
@@ -142,7 +142,7 @@ const TeacherDashboard = () => {
       <div className="flex flex-wrap justify-between">
         <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md mb-6">
           <h3 className="text-xs font-semibold mb-0">Positive affected students over Negative affected students</h3>
-          <PercentageEmployeeSalesDoughnutChart percentage={data} />
+          <PercentageCharts percentage={data} />
         </div>
         <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md mb-6">
           <h3 className="text-lg font-semibold mb-5">Monthly statistics</h3>

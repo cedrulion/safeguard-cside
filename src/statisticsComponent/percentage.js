@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
-const PercentageDoghnutCompletion = ({ percentage }) => {
+const PercentageDoghnutCharts = ({ percentage }) => {
   const chartRef = useRef(null);
-  const NodataRef = useRef(null)  
+  const NodataRef = useRef(null)
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
 
@@ -12,7 +12,7 @@ const PercentageDoghnutCompletion = ({ percentage }) => {
     }
 
     const data = {
-      labels: ['Total inquiries','Total responded inquiries', ],
+      labels: ['inquiries you responded','Total inquries sent', ],
       datasets: [{
         data: [percentage.percentage, 100 - percentage.percentage],
         backgroundColor: ['#92C348', '#E6E6E6'], // Green for completed, Gray for remaining
@@ -64,7 +64,7 @@ const PercentageDoghnutCompletion = ({ percentage }) => {
       <div style={{ position: 'relative', width: '300px', height: '300px' }}>
         <div style={{ position: 'absolute', bottom: '90px', left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}>
           <p className="font-gt-america" style={{ margin: 0, fontWeight: "bold", fontSize: "1.5em" }}>{percentage.dataPresent === true ? `${percentage.percentage} %` : ""} </p>
-          <p style={{ fontWeight: "bold", fontSize: "1.9em", margin: 0 }}>{percentage.dataPresent === true ? <span style={{fontSize:"1em"}}>Inquiries</span> : "No Data"}</p>
+          <p style={{ fontWeight: "bold", fontSize: "1.9em", margin: 0 }}>{percentage.dataPresent === true ? <span style={{fontSize:"1em"}}>sales</span> : "No Data"}</p>
         </div>
         <canvas ref={chartRef}></canvas>
       </div>
@@ -72,4 +72,4 @@ const PercentageDoghnutCompletion = ({ percentage }) => {
   );
 };
 
-export default PercentageDoghnutCompletion;
+export default PercentageDoghnutCharts;

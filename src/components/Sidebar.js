@@ -18,20 +18,20 @@ const Sidebar = ({ onClose }) => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     setRole(loggedInUser.role);
     if(loggedInUser.role==="DOCTOR"){
-      navigate("/dashboard/alist")
-      setActiveItem("/dashboard/alist")
+      navigate("/dashboard/doctor/stats")
+      setActiveItem("/dashboard/doctor/stats")
     }
     else if(loggedInUser.role==="PATIENT"){
       navigate("/dashboard/definition")
       setActiveItem("/dashboard/definition")
     }
     else if(loggedInUser.role==="TEACHER"){
-      navigate("/dashboard/browse")
-      setActiveItem("/dashboard/browse")
+      navigate("/dashboard/teacher/stats")
+      setActiveItem("/dashboard/teacher/stats")
     }
     else{
-      navigate("/dashboard/usrman")
-      setActiveItem("/dashboard/usrman")
+      navigate("/dashboard/admin/stats")
+      setActiveItem("/dashboard/admin/stats")
     }
   }, []);
 
@@ -46,7 +46,7 @@ const Sidebar = ({ onClose }) => {
         { path: '/dashboard/doctor/stats', icon: "fa-home", label: 'DASHBOARD' },
         { path: '/dashboard/alist', icon: "fa-calendar-check", label: 'APPOINTMENTS' },
         { path: '/dashboard/dolist', icon: "fa-list", label: 'QUESTIONS LIST' },
-        { path: '/dashboard/doctor/questionlist', icon: "fa-bars-progress", label: 'ANSWERED QUESTIONS' }
+        // { path: '/dashboard/doctor/questionlist', icon: "fa-bars-progress", label: 'ANSWERED QUESTIONS' }
       ],
       TEACHER: [
         { path: '/dashboard/teacher/stats', icon: "fa-home", label: 'DASHBOARD' },

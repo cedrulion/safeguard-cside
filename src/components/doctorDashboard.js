@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaArrowUp, FaArrowDown, FaExchangeAlt } from 'react-icons/fa';
+import {  FaExchangeAlt } from 'react-icons/fa';
 import { Chart, registerables } from 'chart.js';
-import EmployeeLineChart from '../statisticsComponent/employeeLineChart';
-import PercentageEmployeeSalesDoughnutChart from '../statisticsComponent/percentageChart';
+import PercentageDoghnut from '../statisticsComponent/percentageChart';
+import MultiLineChart from '../statisticsComponent/MultiLineChart';
 
 Chart.register(...registerables);
 
@@ -11,6 +11,10 @@ const DoctorDashboard = () => {
     const [countsPerMonth, setCountsPerMonth] = useState(Array(12).fill(0));
     const [positiveCountsPerMonth, setPositiveCountsPerMonth] = useState(Array(12).fill(0));
     const [negativeCountsPerMonth, setNegativeCountsPerMonth] = useState(Array(12).fill(0));
+    const [percentage, setPercentage] = useState({
+        dataPresent:false,
+        percentage:0
+    });
     const [inquiriesStats, setInquiriesStats] = useState({
         total: 0,
         responded: 0
@@ -42,22 +46,33 @@ const DoctorDashboard = () => {
                     },
                 });
                 setAppointmentStats({
-                    total:appointmentResponse.data.totalAppointments,
-                    received:appointmentResponse.data.totalConfirmedAppointments
+                    total: appointmentResponse.data.totalAppointments,
+                    received: appointmentResponse.data.totalConfirmedAppointments
                 })
-                console.log(appointmentResponse.data);
-                
                 setInquiriesStats({
-                    total:doctorResponse.data.totalInquiries,
-                    responded:doctorResponse.data.totalEvaluatedByDoctor
+                    total: doctorResponse.data.totalInquiries,
+                    responded: doctorResponse.data.totalEvaluatedByDoctor
                 })
-                const response = await axios.get('http://localhost:5000/api/statistics/teacher/symptoms/stats', {
+                const response = await axios.get('http://localhost:5000/api/statistics/doctor/symptoms/permonth', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: token,
                     },
                 });
-                // setCountsPerMonth(statsPerMonthResponse.data.countsPerMonth.map(item => item.count));
+                const percentageResponse = await axios.get('http://localhost:5000/api/statistics/doctor/symptoms/percentage', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: token,
+                    },
+                });
+                console.log(percentageResponse.data.percentage);
+                
+                setPercentage({
+                    dataPresent:true,
+                    percentage:percentageResponse.data.percentage})
+                setCountsPerMonth(response.data.totalInquiriesPerMonth.map(item => item));
+                setPositiveCountsPerMonth(response.data.positiveEvaluationsPerMonth.map(item => item))
+                setNegativeCountsPerMonth(response.data.negativeEvaluationsPerMonth.map(item => item))
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching transactions:', error);
@@ -67,6 +82,10 @@ const DoctorDashboard = () => {
                     positiveEvaluations: 0,
                     negativeEvaluations: 0
                 })
+                setPercentage({
+                    dataPresent:false,
+                    percentage:0
+                });
             }
         };
 
@@ -121,12 +140,12 @@ const DoctorDashboard = () => {
             </div>
             <div className="flex flex-wrap justify-between">
                 <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md mb-6">
-                    <h3 className="text-xs font-semibold mb-0">Positive affected students over Negative affected students</h3>
-                    <PercentageEmployeeSalesDoughnutChart percentage={data} />
+                    <h3 className="text-xs font-semibold mb-0">Evaluation contribution relative to the total inquiries sent</h3>
+                    <PercentageDoghnut percentage={percentage} />
                 </div>
                 <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md mb-6">
                     <h3 className="text-lg font-semibold mb-5">Monthly statistics</h3>
-                    <EmployeeLineChart statspermonth={countsPerMonth} />
+                    <MultiLineChart statspermonth={countsPerMonth} positiveStats={positiveCountsPerMonth} negativeStats={negativeCountsPerMonth} />
                 </div>
             </div>
 

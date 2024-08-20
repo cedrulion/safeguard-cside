@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
-const LineChartEvaluation = ({ statsPerMonth }) => {
+const LineChartEvaluation = ({ receivedInquiries,positiveEvaluations,negativeEvaluations }) => {
   const chartRef = useRef(null);
-
+  // console.log("total",receivedInquiries)
+  // console.log("negative",negativeEvaluations)
+  // console.log("positive",positiveEvaluations)
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
 
@@ -32,7 +34,7 @@ const LineChartEvaluation = ({ statsPerMonth }) => {
           label: 'Total Received Inquiries',
           backgroundColor: gradientBkgrd,
           borderColor: gradientStroke1,
-          data: [0, ...statsPerMonth.receivedInquiries],
+          data: [0, ...receivedInquiries],
           fill: true,
           pointBorderColor: "#8155ff",
           pointBackgroundColor: "#8155ff",
@@ -49,7 +51,7 @@ const LineChartEvaluation = ({ statsPerMonth }) => {
           label: 'Positive Evaluations',
           backgroundColor: 'rgba(76, 175, 80, 0.2)', // Light green
           borderColor: gradientStroke2,
-          data: [0, ...statsPerMonth.positiveEvaluations],
+          data: [0, ...positiveEvaluations],
           fill: true,
           pointBorderColor: "#4caf50",
           pointBackgroundColor: "#4caf50",
@@ -66,7 +68,7 @@ const LineChartEvaluation = ({ statsPerMonth }) => {
           label: 'Negative Evaluations',
           backgroundColor: 'rgba(244, 67, 54, 0.2)', // Light red
           borderColor: gradientStroke3,
-          data: [0, ...statsPerMonth.negativeEvaluations],
+          data: [0, ...negativeEvaluations],
           fill: true,
           pointBorderColor: "#f44336",
           pointBackgroundColor: "#f44336",
@@ -118,7 +120,7 @@ const LineChartEvaluation = ({ statsPerMonth }) => {
       data: data,
       options: options,
     });
-  }, [statsPerMonth]);
+  }, [receivedInquiries,positiveEvaluations,negativeEvaluations]);
 
   return (
     <div style={{ width: '100%', margin: 'auto' }}>

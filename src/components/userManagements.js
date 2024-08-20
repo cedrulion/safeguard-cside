@@ -130,8 +130,6 @@ const UserManagement = () => {
 
   useEffect(() => {
     fetchUsers();
-    const busInfo = JSON.parse(localStorage.getItem("user")).business
-    setBusiness(busInfo)
   }, []);
 
   return (
